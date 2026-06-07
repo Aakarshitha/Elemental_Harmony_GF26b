@@ -131,26 +131,15 @@ endmodule
 
 
 module harmony_core (
-
-    input  clk,
-
-    input  rst_n,
-
-    input  start,     
-
-    input  [3:0] h_pos,     
-
-    input  [2:0] h_pat,     
-
-    output [7:0] uo_out,
-
-    output [4:0] uio_out_int,
-
-    output [1:0] uio_oe_int
-
+    input wire clk,
+    input wire rst_n,
+    input wire start,     
+    input wire [3:0] h_pos,     
+    input wire [2:0] h_pat,     
+    output wire [7:0] uo_out,
+    output wire [4:0] uio_out_int,
+    output wire [1:0] uio_oe_int
 );
-
-
 
     // --- FSM States ---
 
