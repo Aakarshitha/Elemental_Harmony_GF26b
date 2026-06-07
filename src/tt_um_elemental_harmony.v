@@ -536,69 +536,67 @@ module harmony_core (
 
     always@(*) begin
 
-        /*nxt_dscorefinal = '0;
-
-        nxt_hscorefinal = '0;
-
-        nxt_acc_hscore  = 8'sd0;
-
-        nxt_acc_dscore  = 8'sd0;
-
-        uio_out_int[0]  = 1'b0; 
-
-        uio_oe_int[0]   = 1'b1; //indicates that Pin 0 is output, so uio_out[0] is a valid output, rest are all indicating inputs from uio_in*/
-        
         nxt_dscorefinal = 8'sd0;
+
         nxt_hscorefinal = 8'sd0;
+
         nxt_acc_hscore  = 8'sd0;
+
         nxt_acc_dscore  = 8'sd0;
 
         // Base defaults for your tracking bits
-        uio_out_int_q[0]   = 1'b0;
-        uio_out_int_q[4:1] = curr_state; // Map state directly to MSB debugging pins
-        
-        uio_oe_int_q[0]    = 1'b1;       // Pin 0 is an output (strobe)
-        uio_oe_int_q[1]    = 1'b1;       // Pin 1 is an output (state visibility flag)
+
+        //uio_out_int_q[0]   = 1'b0;
+        uio_out_int_q = {curr_state, 1'b0}; // Map state directly to MSB debugging pins
+        uio_oe_int_q    = 2'b11;       // Pin 0 is an output (strobe)
+
+       // uio_oe_int_q[1]    = 1'b1;       // Pin 1 is an output (state visibility flag)
 
         case (curr_state)
 
-            ST_HUMANPLAY: begin
-
+			ST_HUMANPLAY: begin
                 nxt_acc_hscore  = calc_move_value(c_h_pos, c_h_pat);
-
                 nxt_hscorefinal = hscorefinal + nxt_acc_hscore;
-
                 //uio_out_int 	= 1'b1;// Tell the TB: "Sample this now!" //dont use for human play score recording, use only for design round score recording
 
             end
 
           ST_DESIGNPLAY: begin
-          // Move is being made; strobe is LOW.
-                  uio_out_int_q[0] = 1'b0; 
+                // Move is being made; strobe is LOW.
+		        uio_out_int_q[0] = 1'b0;
           end
 
           ST_DESIGNREST: begin
+
           // Move is finished; strobe is HIGH.
                   uio_out_int_q[0]  = 1'b1; 
+
           // Calculate score based on the move just committed to the board
                   nxt_acc_dscore  = calc_move_value(lfsr_pos, design_pat);
                   nxt_dscorefinal = dscorefinal + nxt_acc_dscore;
           end
-          
+
           default: begin
+
           	          nxt_dscorefinal = '0;
+
         	          nxt_hscorefinal = '0;
+
                           nxt_acc_hscore  = 8'sd0;
+
                           nxt_acc_dscore  = 8'sd0;
-                          uio_out_int_q[0]  = 1'b0; 
-                          uio_oe_int_q[0]   = 1'b1;
+
+                          uio_out_int_q  = {curr_state, 1'b0}; 
+
+                          uio_oe_int_q   = 2'b11;
+
           end
- 
 
         endcase
-
+			
     end
 
+	
     always_comb begin
 
       uo_out_data = 8'h00; 
