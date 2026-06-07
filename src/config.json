@@ -50,6 +50,10 @@
   "LEFT_MARGIN_MULT": 6,
   "RIGHT_MARGIN_MULT": 6,
 
+  "//": "Added by Aak",
+  "SYNTH_DRIVING_CELL": "gf180mcu_fd_sc_mcu7t5v0__inv_2",
+  "SYNTH_DRIVING_CELL_PIN": "ZN",
+  
   "//": "Absolute die size",
   "FP_SIZING": "absolute",
 
