@@ -15,7 +15,7 @@
   "//": "Users have reported that values up to 80 worked well for them.",
   "PL_TARGET_DENSITY_PCT": 60,
 
-  "//": "Added by Aak"
+  "//": "Added by Aak",
   "DESIGN_NAME": "tt_um_elemental_harmony",
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
