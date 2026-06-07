@@ -17,6 +17,7 @@ jobs:
         uses: TinyTapeout/tt-gds-action@ttgf26a
         with:
           pdk: gf180mcuD
+          timeout: 3600
 
   precheck:
     needs: gds
