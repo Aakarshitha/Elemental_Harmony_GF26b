@@ -115,7 +115,9 @@ module tt_um_elemental_harmony (
    // assign _unused_ok = &{uio_in, 1'b0};
 
 	// Force the compiler to preserve the ports in the netlist
+	/* verilator lint_off UNUSED *
     (* keep *) wire [7:0] dummy_uio_bind = uio_in;
+	/* verilator lint_on UNUSED */
 
   
 
