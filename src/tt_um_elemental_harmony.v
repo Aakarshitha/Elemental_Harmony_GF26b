@@ -110,9 +110,12 @@ module tt_um_elemental_harmony (
 
   
 
-    wire _unused_ok;
+   // wire _unused_ok;
 
-    assign _unused_ok = &{uio_in, 1'b0};
+   // assign _unused_ok = &{uio_in, 1'b0};
+
+	// Force the compiler to preserve the ports in the netlist
+    (* keep *) wire [7:0] dummy_uio_bind = uio_in;
 
   
 
