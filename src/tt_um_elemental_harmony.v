@@ -131,11 +131,11 @@ endmodule
 
 
 module harmony_core (
-    input wire clk,
-    input wire rst_n,
+    input reg clk,
+    input reg rst_n,
     input wire start,     
-    input wire [3:0] h_pos,     
-    input wire [2:0] h_pat,     
+    input reg [3:0] h_pos,     
+    input reg [2:0] h_pat,     
     output wire [7:0] uo_out,
     output wire [4:0] uio_out_int,
     output wire [1:0] uio_oe_int
