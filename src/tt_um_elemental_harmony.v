@@ -24,15 +24,15 @@ module tt_um_elemental_harmony (
 
   input wire  [7:0] uio_in,  
 
-  input wire        ena,      
+  output wire [7:0] uio_out,  
 
-  input wire        rst_n,
+  output wire [7:0] uio_oe,
+	
+  input wire        ena,   
 
   input wire 	    clk,
 
-  output wire [7:0] uio_out,  
-
-  output wire [7:0] uio_oe
+  input wire        rst_n  
 
 );
 
