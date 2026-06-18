@@ -5,10 +5,12 @@ project:
   discord:      "akiha1847"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Elemental Harmony is a silicon-based 4 * 4 strategy game, like Tic-Tac-Toe, where players compete against a logic engine to score points by matching elemental patterns across a digital grid."      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     50000000       # Clock frequency in Hz (or 0 if not applicable) #50MHz
+  clock_hz:     10000000
+  # 12048192 # Clock frequency in Hz (or 0 if not applicable)
+  # 19230769 - Max Frequency Tested       
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "4x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_elemental_harmony"
@@ -18,6 +20,7 @@ project:
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "tt_um_elemental_harmony.v"
+    - "harmony_core.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
@@ -51,6 +54,7 @@ pinout:
   uio[5]: "unused_input[0]"    # Unused: Bound input pin tied low internally
   uio[6]: "unused_input[1]"    # Unused: Bound input pin tied low internally
   uio[7]: "unused_input[2]"    # Unused: Bound input pin tied low internally
+
 
 # Do not change!
 yaml_version: 6
