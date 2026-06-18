@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = tt_um_elemental_harmony.v
+PROJECT_SOURCES = tt_um_elemental_harmony.v harmony_core.v
 
 ifneq ($(GATES),yes)
 
