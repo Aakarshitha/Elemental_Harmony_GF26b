@@ -37,7 +37,7 @@ module harmony_core (
     reg [2:0]  board [0:15];     
     reg [15:0] occ;            
     reg signed [7:0] hscorefinal, dscorefinal; 
-    reg signed [7:0] nxt_dscorefinal, nxt_hscorefinal;
+    reg signed [7:0] nxt_dscorefinal;
     reg signed [7:0] nxt_acc_hscore, nxt_acc_dscore;
     reg [4:0]  uio_out_int_q;
     reg [1:0]  uio_oe_int_q;
@@ -60,7 +60,6 @@ module harmony_core (
     
     reg [3:0] lfsr_pos;
     wire [3:0] lfsr_lookahead;
-    reg signed [7:0] acc_dscore_reg; 
     reg [4:0] clear_idx; 
     reg signed [7:0] acc_hscore_reg; 
     
@@ -235,7 +234,6 @@ module harmony_core (
     wire [3:0]        L2_idx   [0:3];
     wire signed [7:0] L3_score [0:1];
     wire [3:0]        L3_idx   [0:1];
-    wire signed [7:0] final_strategic_score;
     wire [3:0]        final_strategic_idx;
 
     generate
@@ -262,7 +260,6 @@ module harmony_core (
         end
     endgenerate
 
-    assign final_strategic_score = (L3_score[0] >= L3_score[1]) ? L3_score[0] : L3_score[1];
     assign final_strategic_idx   = (L3_score[0] > L3_score[1]) ? L3_idx[0] :
                                    (L3_score[1] > L3_score[0]) ? L3_idx[1] : (lfsr[3] ? L3_idx[0] : L3_idx[1]);
 
@@ -399,7 +396,6 @@ module harmony_core (
         if (!rst_n_score) begin
             hscorefinal    <= 8'sd0;
             dscorefinal    <= 8'sd0;
-            acc_dscore_reg <= 8'sd0;
             acc_hscore_reg <= 8'sd0;
         end else begin
             case (curr_state)
@@ -411,7 +407,6 @@ module harmony_core (
                 end
                 ST_DESIGNREST: begin
                     dscorefinal    <= nxt_dscorefinal;
-                    acc_dscore_reg <= nxt_acc_dscore;
                 end
             endcase
         end
@@ -433,7 +428,6 @@ module harmony_core (
 
     always_comb begin
         nxt_dscorefinal = dscorefinal;
-        nxt_hscorefinal = hscorefinal;
         nxt_acc_hscore  = 8'sd0;
         nxt_acc_dscore  = 8'sd0;
         uio_out_int_q   = {curr_state, 1'b0}; 
@@ -442,7 +436,6 @@ module harmony_core (
         case (curr_state)
             ST_HUMANPLAY: begin
                 nxt_acc_hscore  = acc_hscore_reg; 
-                nxt_hscorefinal = hscorefinal + nxt_acc_hscore;
             end
             ST_DESIGNPLAY: begin
                 uio_out_int_q[0] = design_strat_mode; 
@@ -454,7 +447,6 @@ module harmony_core (
             end
             default: begin
                 nxt_dscorefinal = dscorefinal;
-                nxt_hscorefinal = hscorefinal;
                 nxt_acc_hscore  = 8'sd0;
                 nxt_acc_dscore  = 8'sd0;
                 uio_out_int_q   = {curr_state, 1'b0}; 
