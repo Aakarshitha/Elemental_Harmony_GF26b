@@ -387,6 +387,15 @@ module harmony_core (
                         end
                     end
                 end
+                
+                default: begin
+                    for (int idx = 0; idx < 16; idx = idx + 1) begin
+                        board[idx] <= board[idx];
+                        occ[idx]   <= occ[idx];
+                    end
+                    design_pat <= design_pat;
+                end
+                
             endcase
         end
     end
@@ -408,6 +417,13 @@ module harmony_core (
                 ST_DESIGNREST: begin
                     dscorefinal    <= nxt_dscorefinal;
                 end
+                
+                default: begin
+                    acc_hscore_reg <= acc_hscore_reg;
+                    hscorefinal    <= hscorefinal;
+                    dscorefinal    <= dscorefinal;
+                end
+                
             endcase
         end
     end
