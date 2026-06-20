@@ -73,7 +73,7 @@ module harmony_core (
     assign last           = (fill_count == 5'd16);
 
     // =========================================================================
-    // PARALLEL DECOUPLED NEIGHBOR LOOKUP NETWORKS (HUMAN)
+    // PARALLEL NEIGHBOR LOOKUP NETWORKS (HUMAN)
     // =========================================================================
     wire [3:0] h_idx_n = c_h_pos - 4;
     wire [3:0] h_idx_s = c_h_pos + 4;
@@ -91,7 +91,7 @@ module harmony_core (
     wire [2:0] h_pat_e = (c_h_pos[1:0] != 2'b11) ? board[h_idx_e] : 3'b0;
 
     // =========================================================================
-    // PARALLEL DECOUPLED NEIGHBOR LOOKUP NETWORKS (DESIGN / PIPELINE STABLE)
+    // PARALLEL NEIGHBOR LOOKUP NETWORKS (DESIGN / PIPELINE STABLE)
     // =========================================================================
     wire [3:0] d_idx_n = lfsr_pos - 4;
     wire [3:0] d_idx_s = lfsr_pos + 4;
@@ -356,7 +356,7 @@ module harmony_core (
         end
     end  
 
-    // --- 3B. Board Fabric State Domain ---
+    // --- 3B. Board State Domain ---
     always_ff @(posedge clk or negedge rst_n_board) begin
         if (!rst_n_board) begin
             occ        <= 16'h0;
@@ -428,7 +428,7 @@ module harmony_core (
         end
     end
 
-    // --- 4. Mathematical Optimization Block (Combinational Core) ---
+    // --- 4. Mathematical Optimization Block (Combinational Logic) ---
     wire [2:0] d_weight = get_positional_weight(lfsr_pos);
     wire signed [7:0] d_base_val = calc_move_value(design_pat, d_has_n, d_has_s, d_has_w, d_has_e, d_pat_n, d_pat_s, d_pat_w, d_pat_e);
     reg signed [7:0] d_weighted_val;
@@ -471,7 +471,7 @@ module harmony_core (
         endcase
     end
 
-    // --- 5. Output Bus Multiplexing (Combinational Core) ---
+    // --- 5. Output Bus Multiplexing (Combinational Logic) ---
     always_comb begin
         uo_out_data = 8'h00; 
         case (curr_state)
