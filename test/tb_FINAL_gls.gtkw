@@ -1,0 +1,21 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Sat Jun 20 05:00:10 2026
+[*]
+[dumpfile] "/home/zerotoasic/Elemental_Harmony_GF26b/test/tb_FINAL.fst"
+[dumpfile_mtime] "Sat Jun 20 04:51:16 2026"
+[dumpfile_size] 797834
+[savefile] "/home/zerotoasic/Elemental_Harmony_GF26b/test/tb_FINAL_gls.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*0.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.user_project.
+[treeopen] tb.user_project.FILLER_1_347.
+[sst_width] 297
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 144
+[pattern_trace] 1
+[pattern_trace] 0
