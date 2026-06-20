@@ -5,7 +5,8 @@ project:
   discord:      "akiha1847"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Elemental Harmony is a silicon-based 4 * 4 strategy game, like Tic-Tac-Toe, where players compete against a logic engine to score points by matching elemental patterns across a digital grid."      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     8000000
+  clock_hz:    10000000 
+  # 8000000
   # 12048192 # Clock frequency in Hz (or 0 if not applicable)
   # 19230769 - Max Frequency Tested       
 
