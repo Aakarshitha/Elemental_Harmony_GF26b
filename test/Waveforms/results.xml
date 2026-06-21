@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1782040810" />
+    <testcase name="test_harmony_final" classname="test" file="/home/zerotoasic/Elemental_Harmony_GF26b/test/test.py" lineno="76" time="0.06556439399719238" sim_time_ns="1340.0" ratio_time="20437.92245006309" />
+  </testsuite>
+</testsuites>
