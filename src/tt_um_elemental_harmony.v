@@ -27,7 +27,7 @@ module tt_um_elemental_harmony (
     reg start_prev;
     wire start_pulse;
 
-    // --- Switched to internal_rst_n and async reset to match pipeline slices ---
+    // --- FIXED: Switched to internal_rst_n and async reset to match pipeline slices ---
     always @(posedge clk or negedge internal_rst_n) begin
         if (!internal_rst_n) begin
             start_prev <= 1'b0;
@@ -35,8 +35,7 @@ module tt_um_elemental_harmony (
             start_prev <= ui_in[7]; 
         end
     end
-
-    assign start_pulse = ui_in[7] && !start_prev; // Edge Event Detection
+    assign start_pulse = ui_in[7] && !start_prev;
 
     // --- Interconnect Wires ---
     wire [7:0] uo_out_data;   
@@ -52,7 +51,6 @@ module tt_um_elemental_harmony (
             uo_out_reg <= uo_out_data;
         end
     end
-
     assign uo_out = uo_out_reg;
     
     // --- Boundary Register Pipeline Slice (uio_out) ---
@@ -81,7 +79,7 @@ module tt_um_elemental_harmony (
     assign uio_out[4:0] = uio_out_reg; 
     assign uio_out[7:5] = 3'b000;
 
-    
+    // Maps the output enables safely to match your updated 2-bit core register signal
     assign uio_oe[1:0] = uio_oe_int;  
     assign uio_oe[4:2] = 3'b111;      // Hardcoded active-high to expose the rest of curr_state
     assign uio_oe[7:5] = 3'b000;      // Unused pins remain safe inputs
