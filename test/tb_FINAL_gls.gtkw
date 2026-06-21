@@ -1,21 +1,29 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Sat Jun 20 05:00:10 2026
+[*] Sun Jun 21 03:34:11 2026
 [*]
 [dumpfile] "/home/zerotoasic/Elemental_Harmony_GF26b/test/tb_FINAL.fst"
-[dumpfile_mtime] "Sat Jun 20 04:51:16 2026"
-[dumpfile_size] 797834
+[dumpfile_mtime] "Sun Jun 21 03:30:47 2026"
+[dumpfile_size] 816524
 [savefile] "/home/zerotoasic/Elemental_Harmony_GF26b/test/tb_FINAL_gls.gtkw"
-[timestart] 0
-[size] 1000 600
-[pos] -1 -1
-*0.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 740700
+[size] 1391 687
+[pos] -27 -24
+*-14.887176 350000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
-[treeopen] tb.user_project.
-[treeopen] tb.user_project.FILLER_1_347.
-[sst_width] 297
-[signals_width] 78
-[sst_expanded] 1
-[sst_vpaned_height] 144
+[sst_width] 43
+[signals_width] 249
+[sst_expanded] 0
+[sst_vpaned_height] 158
+@28
+tb.user_project.clk
+tb.user_project.rst_n
+@23
+tb.user_project.ui_in[7:0]
+@22
+tb.user_project.uio_oe[7:0]
+tb.user_project.uio_out[7:0]
+@420
+tb.user_project.uo_out[7:0]
 [pattern_trace] 1
 [pattern_trace] 0
